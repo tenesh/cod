@@ -1,6 +1,7 @@
 <script lang="ts">
+    import { clickOutside } from '@/directives/outside';
     import Icon from '@iconify/svelte';
-    import { createCollapsible, melt } from '@melt-ui/svelte';
+    import { melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
     import { Link, page } from '@inertiajs/svelte';
 
@@ -10,17 +11,10 @@
         { label: 'Contact', link: '/contact' },
     ];
 
-    let open = false;
-    let disabled = false;
-
-    const {
-        elements: { root, content, trigger },
-        states,
-        options,
-    } = createCollapsible();
+    let isOpen = $state(false);
 </script>
 
-<nav use:melt={$root} class="flex flex-col max-w-[66rem] w-full py-2.5 px-2.5 mx-auto mt-2">
+<nav class="flex flex-col max-w-[66rem] w-full py-2.5 px-2.5 mx-auto mt-2">
     <div class="flex justify-between items-center w-full">
         <div>
             <Link href="/" class="w-full flex items-center space-x-2">
@@ -54,16 +48,30 @@
                 </Link>
             {/if}
         </div>
-        <button class="lg:hidden" on:click={() => (open = !open)} use:melt={$trigger}>
-            {#if open}
+        <button
+            class="lg:hidden"
+            onclick={() => {
+                isOpen = !isOpen;
+            }}
+        >
+            {#if isOpen}
                 <Icon icon="material-symbols:close-rounded" style="font-size: 24px;" />
             {:else}
                 <Icon icon="material-symbols:menu-rounded" style="font-size: 24px;" />
             {/if}
         </button>
     </div>
-    {#if open}
-        <div use:melt={$content} transition:slide class="flex flex-col w-full my-4">
+    {#if isOpen}
+        <div
+            class="flex flex-col w-full px-4 py-2 bg-gray-100 mt-2 rounded-lg"
+            transition:slide
+            use:clickOutside={() => {
+                if (!isOpen) {
+                    return;
+                }
+                isOpen = !isOpen;
+            }}
+        >
             {#each routes as route}
                 <Link
                     href={route.link}
