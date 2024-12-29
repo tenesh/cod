@@ -1,6 +1,7 @@
-import { defineConfig } from 'vite';
-import { svelte } from '@sveltejs/vite-plugin-svelte'
+import {defineConfig} from 'vite';
+import {svelte, vitePreprocess} from '@sveltejs/vite-plugin-svelte'
 import laravel from 'laravel-vite-plugin';
+import {preprocessMeltUI, sequence} from '@melt-ui/pp'
 
 export default defineConfig({
     plugins: [
@@ -8,6 +9,11 @@ export default defineConfig({
             input: 'resources/js/app.ts',
             refresh: true,
         }),
-        svelte(),
+        svelte({
+            preprocess: sequence([
+                vitePreprocess(),
+                preprocessMeltUI()
+            ])
+        }),
     ],
 });
