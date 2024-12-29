@@ -62,7 +62,7 @@
     </div>
     {#if isOpen}
         <div
-            class="flex flex-col w-full px-4 py-2 bg-gray-100 mt-2 rounded-lg"
+            class="flex flex-col w-full px-4 py-2 bg-gray-100 mt-2 rounded-lg lg:hidden"
             transition:slide
             use:clickOutside={() => {
                 if (!isOpen) {
