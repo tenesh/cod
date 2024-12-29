@@ -36,7 +36,31 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            //
+            'appName' => config('app.name'),
+            'auth' => $this->authConfig($request),
         ]);
+    }
+
+    /**
+     * Retrieve authentication configuration data based on the authenticated user.
+     *
+     * @return array<string, mixed
+     */
+    public function authConfig(Request $request): array
+    {
+
+        if (! $request->user()) {
+            return [];
+        }
+
+        return [
+            'user' => [
+                'uuid' => $request->user()->uuid,
+                'email' => $request->user()->email,
+                'email_verified_at' => $request->user()->email_verified_at,
+                'username' => $request->user()->account->username,
+                'active' => $request->user()->account->active,
+            ],
+        ];
     }
 }
