@@ -11,7 +11,7 @@
         @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.svelte"])
         @inertiaHead
     </head>
-    <body class="font-sans antialiased">
+    <body>
         @inertia
     </body>
 </html>
