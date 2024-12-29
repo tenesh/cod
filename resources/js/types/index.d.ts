@@ -1,10 +1,12 @@
 import { Config } from 'ziggy-js';
 
 export interface User {
-    id: number;
+    uuid: number;
     name: string;
     email: string;
     email_verified_at?: string;
+    username?: string;
+    active?: boolean;
 }
 
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
@@ -12,4 +14,5 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
         user: User;
     };
     ziggy: Config & { location: string };
+    appName: string;
 };
