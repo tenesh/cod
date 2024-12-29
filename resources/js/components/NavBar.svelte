@@ -1,7 +1,6 @@
 <script lang="ts">
     import { clickOutside } from '@/directives/outside';
     import Icon from '@iconify/svelte';
-    import { melt } from '@melt-ui/svelte';
     import { slide } from 'svelte/transition';
     import { Link, page } from '@inertiajs/svelte';
 
