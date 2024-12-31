@@ -14,21 +14,12 @@ class Account extends Model
     use HasFactory, HasUuids;
 
     /**
-     * The storage format of the model's date columns.
-     *
-     * @var string
-     */
-    protected $dateFormat = 'U';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
     protected $fillable = [
-        'username',
-        'first_name',
-        'last_name',
+        'name',
         'gender',
         'birth_date',
         'active',
@@ -49,44 +40,16 @@ class Account extends Model
     }
 
     /**
-     * Access or mutate the username attribute.
+     * Access or mutate the name attribute.
      *
      * @return Attribute
      */
-    protected function username(): Attribute
+    protected function name(): Attribute
     {
 
         return Attribute::make(
             get: fn (string $value) => Str::lower($value),
             set: fn (string $value) => Str::lower($value),
-        );
-    }
-
-    /**
-     * Access or mutate the first_name attribute.
-     *
-     * @return Attribute
-     */
-    protected function firstName(): Attribute
-    {
-
-        return Attribute::make(
-            get: fn (?string $value) => Str::ucfirst($value),
-            set: fn (?string $value) => Str::lower($value),
-        );
-    }
-
-    /**
-     * Access or mutate the last_name attribute.
-     *
-     * @return Attribute
-     */
-    protected function lastName(): Attribute
-    {
-
-        return Attribute::make(
-            get: fn (?string $value) => Str::ucfirst($value),
-            set: fn (?string $value) => Str::lower($value),
         );
     }
 

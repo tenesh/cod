@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class AccountController extends Controller
+class DashboardController extends Controller
 {
     public function view(): Response
     {
-        return Inertia::render('account/Account');
+        return Inertia::render('dashboard/Dashboard');
     }
 }

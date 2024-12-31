@@ -14,13 +14,6 @@ class User extends Authenticatable
     use HasFactory, Notifiable, HasUuids;
 
     /**
-     * The storage format of the model's date columns.
-     *
-     * @var string
-     */
-    protected $dateFormat = 'U';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
@@ -28,6 +21,8 @@ class User extends Authenticatable
     protected $fillable = [
         'email',
         'password',
+        'google_id',
+        'twitter_id'
     ];
 
     /**
@@ -54,11 +49,11 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the profile associated with the user.
+     * Get the account associated with the user.
      *
      * @return HasOne
      */
-    public function profile():HasOne
+    public function account():HasOne
     {
         return $this->hasOne(Account::class);
     }

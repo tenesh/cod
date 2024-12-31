@@ -15,11 +15,10 @@ return new class extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
-            $table->string('username');
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
+            $table->string('name');
             $table->enum('gender', Gender::values())->nullable();
             $table->date('birth_date')->nullable();
+            $table->string('avatar')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

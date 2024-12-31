@@ -58,7 +58,8 @@ class HandleInertiaRequests extends Middleware
                 'uuid' => $request->user()->uuid,
                 'email' => $request->user()->email,
                 'email_verified_at' => $request->user()->email_verified_at,
-                'username' => $request->user()->account->username,
+                'name' => $request->user()->account->name,
+                'avatar' => $request->user()->account->avatar,
                 'active' => $request->user()->account->active,
             ],
         ];
