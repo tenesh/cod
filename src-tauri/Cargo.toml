@@ -1,8 +1,9 @@
 [package]
 name = "netbalance"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "Your all-in-one solution for auditing and budgeting."
+authors = ["codcax"]
+license = "GPL-3.0-or-later"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

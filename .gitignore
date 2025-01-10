@@ -1,3 +1,5 @@
+/.idea
+/.vscode
 .DS_Store
 node_modules
 /build
@@ -8,3 +10,7 @@ node_modules
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
