@@ -12,9 +12,16 @@ html {
 
 body {
     display: flex;
+    flex-direction: column;
+    position: relative;
     min-width: 100%;
     min-height: 100%;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+}
+
+#top-bar,
+#content {
+    width: calc(100vw - 250px);
 }
