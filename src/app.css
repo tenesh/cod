@@ -25,3 +25,23 @@ body {
 #content {
     width: calc(100vw - 250px);
 }
+
+.button-primary {
+    @apply flex items-center justify-center gap-2 rounded-lg bg-primary-brand px-4 py-2 text-sm text-white hover:bg-primary-600;
+}
+
+.button-secondary {
+    @apply flex items-center justify-center gap-2 rounded-lg border border-secondary-100 bg-white px-4 py-2 text-sm hover:bg-primary-50;
+}
+
+.button-icon {
+    @apply rounded-lg p-1 hover:text-primary-brand;
+}
+
+input {
+    @apply focus:!border-primary-brand focus:!ring-primary-200;
+}
+
+input[type='checkbox']:checked {
+    @apply !bg-primary-400;
+}

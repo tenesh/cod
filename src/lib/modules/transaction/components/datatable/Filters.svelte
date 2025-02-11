@@ -1,6 +1,10 @@
 <script lang="ts">
+    import { Filter } from 'lucide-svelte';
 </script>
 
-<div class="flex w-full flex-col rounded-lg border border-secondary-100">
-
+<div class="flex w-full justify-end">
+    <button class="button-secondary">
+        <Filter size={14} class="mt-0.5" />
+        Filters
+    </button>
 </div>
