@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ArrowUp, ArrowDown, Eye } from 'lucide-svelte';
+    import { ArrowUp, Eye } from 'lucide-svelte';
     import Badge from '$lib/common/components/badge/Badge.svelte';
 
     let sortCreatedDate = $state('ascending');
