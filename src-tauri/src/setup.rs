@@ -51,10 +51,9 @@ fn create_app_directory(state: &std::sync::Mutex<SetupState>) -> std::io::Result
 pub fn create_database_file(state: &std::sync::Mutex<SetupState>) -> std::io::Result<()> {
     let app_dir_path = utils::get_app_directory();
     let db_file_path = format!(
-        "{}/{}.{}",
+        "{}/{}",
         app_dir_path,
-        constant::APP_DATABASE_NAME,
-        "sqlite"
+        constant::APP_DATABASE_NAME
     );
 
     let path = std::path::Path::new(&db_file_path);
