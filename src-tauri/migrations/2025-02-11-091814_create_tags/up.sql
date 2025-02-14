@@ -1,5 +1,5 @@
 -- Your SQL goes here
-CREATE TABLE categories
+CREATE TABLE tags
 (
 	id          INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	name        TEXT    NOT NULL,
@@ -13,13 +13,13 @@ CREATE TABLE categories
 		ON UPDATE CASCADE
 );
 
-CREATE TRIGGER update_categories_updated_at
+CREATE TRIGGER update_tags_updated_at
 	AFTER UPDATE
-	ON categories
+	ON tags
 	FOR EACH ROW
 	WHEN old.updated_at <> current_timestamp
 BEGIN
-	UPDATE categories
+	UPDATE tags
 	SET updated_at = current_timestamp
 	WHERE id = old.id;
 END;
