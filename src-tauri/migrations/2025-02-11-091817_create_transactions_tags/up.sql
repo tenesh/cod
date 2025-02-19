@@ -2,7 +2,7 @@
 CREATE TABLE transactions_tags
 (
 	transaction_id INTEGER NOT NULL,
-	tag_id    INTEGER NOT NULL,
+	tag_id         INTEGER NOT NULL,
 	created_at     TEXT    NOT NULL DEFAULT current_timestamp,
 	updated_at     TEXT    NOT NULL DEFAULT current_timestamp,
 	PRIMARY KEY (transaction_id, tag_id),

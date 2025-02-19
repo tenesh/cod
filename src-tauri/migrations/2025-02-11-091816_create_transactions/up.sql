@@ -6,12 +6,13 @@ CREATE TABLE transactions
 	description     TEXT    NULL,
 	currency_id     INTEGER NOT NULL,
 	conversion_rate REAL    NOT NULL DEFAULT 1 CHECK (conversion_rate > 0),
-	amount          REAL    NOT NULL DEFAULT 0 CHECK ((category = 'inflow' AND amount >= 0) OR (category = 'outflow' AND amount <= 0)),
-	category            TEXT    NOT NULL CHECK (category IN ('inflow', 'outflow')),
+	amount          REAL    NOT NULL DEFAULT 0 CHECK ((category = 'Inflow' AND amount >= 0) OR
+													  (category = 'Outflow' AND amount <= 0)),
+	category        TEXT    NOT NULL CHECK (category IN ('Inflow', 'Outflow')),
 	medium          TEXT    NOT NULL CHECK (medium IN
-											('cash', 'bank_transfer', 'credit_card', 'debit_card', 'digital_payment',
-											 'crypto', 'check', 'mobile_wallet', 'other')),
-	status          TEXT    NOT NULL CHECK (status IN ('completed', 'declined', 'pending')),
+											('Cash', 'BankTransfer', 'CreditCard', 'DebitCard', 'DigitalPayment',
+											 'Crypto', 'Check', 'MobileWallet', 'Other')),
+	status          TEXT    NOT NULL CHECK (status IN ('Completed', 'Declined', 'Pending')),
 	wallet_id       INTEGER NOT NULL,
 	transacted_at   TEXT    NOT NULL DEFAULT current_timestamp,
 	created_at      TEXT    NOT NULL DEFAULT current_timestamp,
