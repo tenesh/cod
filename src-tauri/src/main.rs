@@ -10,7 +10,7 @@ use std::sync::Mutex;
 use tauri::async_runtime::spawn;
 
 fn main() {
-    netbalance_lib::run()
+    run()
 }
 
 
