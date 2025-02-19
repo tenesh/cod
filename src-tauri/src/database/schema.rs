@@ -1,6 +1,27 @@
 // @generated automatically by Diesel CLI.
 
 diesel::table! {
+    accounts (id) {
+        id -> Integer,
+        name -> Text,
+        description -> Nullable<Text>,
+        currency_id -> Integer,
+        user_id -> Integer,
+        created_at -> Text,
+        updated_at -> Text,
+    }
+}
+
+diesel::table! {
+    accounts_limits (account_id, limit_id) {
+        account_id -> Integer,
+        limit_id -> Integer,
+        created_at -> Text,
+        updated_at -> Text,
+    }
+}
+
+diesel::table! {
     currencies (id) {
         id -> Integer,
         name -> Text,
@@ -49,7 +70,7 @@ diesel::table! {
         category -> Text,
         medium -> Text,
         status -> Text,
-        wallet_id -> Integer,
+        account_id -> Integer,
         transacted_at -> Text,
         created_at -> Text,
         updated_at -> Text,
@@ -76,44 +97,23 @@ diesel::table! {
     }
 }
 
-diesel::table! {
-    wallets (id) {
-        id -> Integer,
-        name -> Text,
-        description -> Nullable<Text>,
-        currency_id -> Integer,
-        user_id -> Integer,
-        created_at -> Text,
-        updated_at -> Text,
-    }
-}
-
-diesel::table! {
-    wallets_limits (wallet_id, limit_id) {
-        wallet_id -> Integer,
-        limit_id -> Integer,
-        created_at -> Text,
-        updated_at -> Text,
-    }
-}
-
+diesel::joinable!(accounts -> currencies (currency_id));
+diesel::joinable!(accounts -> users (user_id));
+diesel::joinable!(accounts_limits -> accounts (account_id));
+diesel::joinable!(accounts_limits -> limits (limit_id));
 diesel::joinable!(tags -> users (user_id));
+diesel::joinable!(transactions -> accounts (account_id));
 diesel::joinable!(transactions -> currencies (currency_id));
-diesel::joinable!(transactions -> wallets (wallet_id));
 diesel::joinable!(transactions_tags -> tags (tag_id));
 diesel::joinable!(transactions_tags -> transactions (transaction_id));
-diesel::joinable!(wallets -> currencies (currency_id));
-diesel::joinable!(wallets -> users (user_id));
-diesel::joinable!(wallets_limits -> limits (limit_id));
-diesel::joinable!(wallets_limits -> wallets (wallet_id));
 
 diesel::allow_tables_to_appear_in_same_query!(
+    accounts,
+    accounts_limits,
     currencies,
     limits,
     tags,
     transactions,
     transactions_tags,
     users,
-    wallets,
-    wallets_limits,
 );

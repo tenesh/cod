@@ -1,5 +1,5 @@
 -- Your SQL goes here
-CREATE TABLE wallets
+CREATE TABLE accounts
 (
 	id          INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	name        TEXT    NOT NULL,
@@ -15,13 +15,13 @@ CREATE TABLE wallets
 		ON UPDATE CASCADE
 );
 
-CREATE TRIGGER update_wallets_updated_at
+CREATE TRIGGER update_accounts_updated_at
 	AFTER UPDATE
-	ON wallets
+	ON accounts
 	FOR EACH ROW
 	WHEN old.updated_at <> current_timestamp
 BEGIN
-	UPDATE wallets
+	UPDATE accounts
 	SET updated_at = current_timestamp
 	WHERE id = old.id;
 END;

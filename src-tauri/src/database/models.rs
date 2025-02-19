@@ -28,9 +28,9 @@ pub struct User {
 }
 
 #[derive(Queryable, Selectable)]
-#[diesel(table_name = crate::schema::wallets)]
+#[diesel(table_name = crate::schema::accounts)]
 #[diesel(check_for_backend(diesel::sqlite::Sqlite))]
-pub struct Wallet {
+pub struct Account {
     pub id: i32,
     pub name: String,
     pub description: Option<String>,
@@ -66,7 +66,7 @@ pub struct Transaction {
     pub category: enums::TransactionCategory,
     pub medium: enums::TransactionMedium,
     pub status: enums::TransactionStatus,
-    pub wallet_id: i32,
+    pub account_id: i32,
     pub transacted_at: String,
     pub created_at: String,
     pub updated_at: String,

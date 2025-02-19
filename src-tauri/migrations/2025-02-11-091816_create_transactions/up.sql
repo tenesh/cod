@@ -13,13 +13,13 @@ CREATE TABLE transactions
 											('Cash', 'BankTransfer', 'CreditCard', 'DebitCard', 'DigitalPayment',
 											 'Crypto', 'Check', 'MobileWallet', 'Other')),
 	status          TEXT    NOT NULL CHECK (status IN ('Completed', 'Declined', 'Pending')),
-	wallet_id       INTEGER NOT NULL,
+	account_id       INTEGER NOT NULL,
 	transacted_at   TEXT    NOT NULL DEFAULT current_timestamp,
 	created_at      TEXT    NOT NULL DEFAULT current_timestamp,
 	updated_at      TEXT    NOT NULL DEFAULT current_timestamp,
 	FOREIGN KEY (currency_id) REFERENCES currencies (id)
 		ON UPDATE CASCADE,
-	FOREIGN KEY (wallet_id) REFERENCES wallets (id)
+	FOREIGN KEY (account_id) REFERENCES accounts (id)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE
 );

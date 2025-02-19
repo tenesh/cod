@@ -1,12 +1,12 @@
 -- Your SQL goes here
-CREATE TABLE wallets_limits
+CREATE TABLE accounts_limits
 (
-	wallet_id INTEGER NOT NULL,
+	account_id INTEGER NOT NULL,
 	limit_id    INTEGER NOT NULL,
 	created_at     TEXT    NOT NULL DEFAULT current_timestamp,
 	updated_at     TEXT    NOT NULL DEFAULT current_timestamp,
-	PRIMARY KEY (wallet_id, limit_id),
-	FOREIGN KEY (wallet_id) REFERENCES wallets (id)
+	PRIMARY KEY (account_id, limit_id),
+	FOREIGN KEY (account_id) REFERENCES accounts (id)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE,
 	FOREIGN KEY (limit_id) REFERENCES limits (id)
@@ -14,14 +14,14 @@ CREATE TABLE wallets_limits
 		ON UPDATE CASCADE
 );
 
-CREATE TRIGGER update_wallets_limits_updated_at
+CREATE TRIGGER update_accounts_limits_updated_at
 	AFTER UPDATE
-	ON wallets_limits
+	ON accounts_limits
 	FOR EACH ROW
 	WHEN old.updated_at <> current_timestamp
 BEGIN
-	UPDATE wallets_limits
+	UPDATE accounts_limits
 	SET updated_at = current_timestamp
-	WHERE wallet_id = old.wallet_id
+	WHERE account_id = old.account_id
 	  AND limit_id = old.limit_id;
 END;

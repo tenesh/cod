@@ -19,15 +19,15 @@
             Dashboard
         </a>
         <a
-            href="/app/transactions"
+            href="/app/wallets"
             class="my-0.5 flex w-full items-center gap-2 rounded-lg px-2 py-2.5 {page.url.pathname.startsWith(
-                '/app/transactions',
+                '/app/wallets',
             )
                 ? 'bg-primary-100'
                 : 'hover:bg-secondary-50'}"
         >
             <ArrowLeftRight size={18} />
-            Transactions
+            Wallets
         </a>
         <a
             href="/app/setting"
