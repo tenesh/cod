@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Breadcrumb from '$lib/common/components/topbar/Breadcrumb.svelte';
-    import Notification from '$lib/common/components/topbar/Notification.svelte';
+    import Breadcrumb from '$lib/components/topbar/Breadcrumb.svelte';
+    import Notification from '$lib/components/topbar/Notification.svelte';
 </script>
 
 <div

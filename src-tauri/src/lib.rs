@@ -1,3 +1,5 @@
+extern crate core;
+
 mod setup;
 mod utils;
 mod database;
@@ -14,11 +16,18 @@ pub fn run() {
             directory_task: false,
         }))
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![])
+        .invoke_handler(tauri::generate_handler![
+            my_custom_command
+        ])
         .setup(|app| {
             spawn(setup::initialize(app.handle().clone()));
             Ok(())
         })
         .run(tauri::generate_context!())
         .expect("error while running application");
+}
+
+#[tauri::command]
+fn my_custom_command() {
+    println!("Got command from tauri!");
 }

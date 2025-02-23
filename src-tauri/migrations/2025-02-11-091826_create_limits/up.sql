@@ -5,10 +5,10 @@ CREATE TABLE limits
 	name                 TEXT    NOT NULL,
 	description          TEXT    NULL,
 	interval             TEXT    NOT NULL CHECK (interval IN
-												 ('Hourly', 'Daily', 'Weekly', 'Biweekly', 'Monthly', 'Quarterly',
-												  'Semiannually', 'Annually', 'Biennially', 'Custom')),
-	custom_interval_days INTEGER CHECK ((interval = 'Custom' AND custom_interval_days > 0) OR
-										(interval <> 'Custom' AND custom_interval_days IS NULL)),
+												 ('hourly', 'daily', 'weekly', 'biweekly', 'monthly', 'quarterly',
+												  'semiannually', 'annually', 'biennially', 'custom')),
+	custom_interval_days INTEGER CHECK ((interval = 'custom' AND custom_interval_days > 0) OR
+										(interval <> 'custom' AND custom_interval_days IS NULL)),
 	amount               REAL    NOT NULL DEFAULT 0 CHECK (amount >= 0),
 	created_at           TEXT    NOT NULL DEFAULT current_timestamp,
 	updated_at           TEXT    NOT NULL DEFAULT current_timestamp

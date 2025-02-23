@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { ArrowLeftRight, LayoutDashboard, Settings } from 'lucide-svelte';
     import { page } from '$app/state';
 </script>
 
@@ -11,34 +10,27 @@
     <nav class="mx-2 flex flex-col items-center gap-0.5 p-4 text-sm">
         <a
             href="/app"
-            class="my-0.5 flex w-full items-center gap-2 rounded-lg px-2 py-2.5 {page.url.pathname === '/app'
+            class="my-1 flex w-full items-center rounded-lg px-4 py-2.5 {page.url.pathname === '/app'
                 ? 'bg-primary-100'
                 : 'hover:bg-secondary-50'}"
         >
-            <LayoutDashboard size={18} />
             Dashboard
         </a>
         <a
-            href="/app/wallets"
-            class="my-0.5 flex w-full items-center gap-2 rounded-lg px-2 py-2.5 {page.url.pathname.startsWith(
-                '/app/wallets',
-            )
+            href="/app/accounts"
+            class="my-1 flex w-full items-center rounded-lg px-4 py-2.5 {page.url.pathname.startsWith('/app/accounts')
                 ? 'bg-primary-100'
                 : 'hover:bg-secondary-50'}"
         >
-            <ArrowLeftRight size={18} />
-            Wallets
+            Accounts
         </a>
         <a
-            href="/app/setting"
-            class="my-0.5 flex w-full items-center gap-2 rounded-lg px-2 py-2.5 {page.url.pathname.startsWith(
-                '/app/setting',
-            )
+            href="/app/settings"
+            class="my-1 flex w-full items-center rounded-lg px-4 py-2.5 {page.url.pathname.startsWith('/app/settings')
                 ? 'bg-primary-100'
                 : 'hover:bg-secondary-50'}"
         >
-            <Settings size={18} />
-            Setting
+            Settings
         </a>
     </nav>
 </div>
