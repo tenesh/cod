@@ -23,6 +23,17 @@
                 "url": "/app"
             },
             {
+                "label": "onboard",
+                "visible": false,
+                "title": "netbalance",
+                "width": 800,
+                "height": 600,
+                "minWidth": 800,
+                "minHeight": 600,
+                "titleBarStyle": "Visible",
+                "url": "/guest/onboard"
+            },
+            {
                 "label": "splashscreen",
                 "url": "/guest/splashscreen",
                 "title": "netbalance",
