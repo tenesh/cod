@@ -8,6 +8,7 @@ use crate::state::AppState;
 use anyhow::{Context, Error, Result};
 use diesel::r2d2::{ConnectionManager, Pool};
 use diesel::SqliteConnection;
+use netbalance_core::constants;
 use netbalance_core::database;
 use netbalance_core::utils;
 use std::fs;
@@ -78,6 +79,11 @@ async fn setup(app: AppHandle) -> Result<()> {
         }
     };
 
+    if let Err(e) = utils::set_app_version(constants::PKG_VERSION) {
+        app.emit(EVENT_SETUP_FAILED, e.to_string())?;
+        return Ok(());
+    }
+
     complete(clone, state, pool);
     Ok(())
 }
@@ -91,8 +97,6 @@ fn complete(
 
     state_lock.set_init(true);
     state_lock.set_pool(pool);
-
-    println!("{:?}", state_lock.init);
 
     if state_lock.init {
         let splash_window = app.get_webview_window("splashscreen").unwrap();
