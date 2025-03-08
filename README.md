@@ -1,15 +1,7 @@
-## Disclaimer
+# Tauri + SvelteKit + TypeScript
 
-⚠️ The project is under development.
+This template should help get you started developing with Tauri, SvelteKit and TypeScript in Vite.
 
-## Installation
+## Recommended IDE Setup
 
-> Work in progress
-
-## Documentation
-
-> Work in progress
-
-## License
-
-This project is available under the [GPL-3.0 or later](./LICENSE).
+[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
