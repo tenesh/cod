@@ -20,7 +20,8 @@
         "minWidth": 800,
         "minHeight": 600,
         "titleBarStyle": "Visible",
-        "url": "/app"
+        "url": "/app",
+        "maximized": true
       },
       {
         "label": "splashscreen",

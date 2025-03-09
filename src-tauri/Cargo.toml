@@ -1,7 +1,7 @@
 [package]
 name = "netbalance"
 version = "0.1.0"
-description = "Your personal finance management application."
+description = "Your personal financial companion — track, plan, and grow with confidence."
 authors = ["tenesh"]
 license = "GPL-3.0-or-later"
 edition = "2021"
