@@ -1,7 +1,7 @@
 [package]
 name = "netbalance"
 version = "0.1.0"
-description = "Your all-in-one solution for auditing and budgeting. A Tauri-powered desktop app for managing transactions, tracking balances, and gaining financial insights."
+description = "Your personal finance management application."
 authors = ["tenesh"]
 license = "GPL-3.0-or-later"
 edition = "2021"

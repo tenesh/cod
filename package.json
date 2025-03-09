@@ -2,7 +2,7 @@
     "name": "netbalance",
     "private": true,
     "version": "0.1.0",
-    "description": "Your all-in-one solution for auditing and budgeting.",
+    "description": "Your personal finance management application.",
     "type": "module",
     "scripts": {
         "dev": "vite dev",
