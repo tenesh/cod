@@ -6,12 +6,15 @@ pub mod schema;
 use anyhow::{anyhow, Context, Result};
 use diesel::r2d2::{ConnectionManager, Pool, PooledConnection};
 use diesel::{Connection, RunQueryDsl, SqliteConnection};
-use diesel_migrations::MigrationHarness;
+use diesel_migrations::{embed_migrations, EmbeddedMigrations, MigrationHarness};
 use std::sync::Mutex;
 use tauri::{AppHandle, Manager};
+use tracing::{info, warn, error, debug};
 
 use crate::global::get_app_db_file_path;
-use crate::{global, DbState};
+use crate::state::DbState;
+
+const MIGRATIONS: EmbeddedMigrations = embed_migrations!("./migrations");
 
 fn get_db_url() -> Result<String> {
     let db_file = get_app_db_file_path();
@@ -82,7 +85,7 @@ pub fn get_connection_pool() -> Result<Pool<ConnectionManager<SqliteConnection>>
 
 pub fn run_migrations() -> Result<()> {
     let mut conn = establish_direct_connection()?;
-    match conn.run_pending_migrations(global::MIGRATIONS) {
+    match conn.run_pending_migrations(MIGRATIONS) {
         Ok(_) => {
             info!("Database migrations completed successfully.");
             Ok(())

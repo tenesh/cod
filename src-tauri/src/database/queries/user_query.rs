@@ -1,9 +1,11 @@
-use crate::database::models::user::{NewUser, User};
-use crate::database::schema::users;
-use crate::database::schema::users::dsl::*;
 use diesel::r2d2::{ConnectionManager, PooledConnection};
 use diesel::result::Error;
 use diesel::{QueryDsl, RunQueryDsl, SelectableHelper, SqliteConnection};
+use tracing::{debug, error, info, warn};
+
+use crate::database::models::user::{NewUser, User};
+use crate::database::schema::users;
+use crate::database::schema::users::dsl::*;
 
 pub fn get_user_by_id(
     conn: &mut PooledConnection<ConnectionManager<SqliteConnection>>,

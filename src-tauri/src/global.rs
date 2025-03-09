@@ -1,29 +1,4 @@
-use diesel::r2d2::{ConnectionManager, Pool};
-use diesel::SqliteConnection;
-use diesel_migrations::{embed_migrations, EmbeddedMigrations};
 use std::{fs, path};
-
-pub const MIGRATIONS: EmbeddedMigrations = embed_migrations!("./migrations");
-
-pub struct DbState {
-    pub conn_pool: Pool<ConnectionManager<SqliteConnection>>,
-}
-
-impl DbState {
-    pub fn new(conn_pool: Pool<ConnectionManager<SqliteConnection>>) -> Self {
-        Self { conn_pool }
-    }
-}
-
-pub struct SetupState {
-    pub backend_done: bool,
-}
-
-impl SetupState {
-    pub fn new(backend_done: bool) -> Self {
-        Self { backend_done }
-    }
-}
 
 pub fn get_app_config_dir_path() -> path::PathBuf {
     let config_dir = dirs::config_dir().unwrap();

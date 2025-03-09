@@ -1,6 +1,5 @@
-use std::thread::sleep;
-use std::time::Duration;
-use anyhow::{Result};
+use anyhow::Result;
+use tracing::{debug, error, info, warn};
 
 use crate::database;
 use crate::global::{get_app_config_dir_path, get_app_db_file_path, get_app_log_file_path};
@@ -41,6 +40,7 @@ pub fn setup_logger() -> Result<()> {
 
     Ok(())
 }
+
 pub fn setup_app() -> Result<()> {
     let app_dir = get_app_config_dir_path();
     let db_file = get_app_db_file_path();
@@ -51,8 +51,6 @@ pub fn setup_app() -> Result<()> {
     info!("Log file: {:?}", log_file);
 
     database::run_migrations()?;
-
-    sleep(Duration::from_secs(25));
 
     info!("Database migrations completed successfully");
 
