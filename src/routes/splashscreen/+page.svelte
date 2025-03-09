@@ -1,16 +1,16 @@
 <script lang="ts">
+    import { onDestroy, onMount } from 'svelte';
     import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
     import { type SetupFailed, SetupFailedEvent } from '$lib/events/types';
-    import { onDestroy, onMount } from 'svelte';
 
     let listener: (() => void) | null = null;
-    let failed = false;
+    let app_setup = $state(false);
 
     const appWebview = getCurrentWebviewWindow();
 
     onMount(async () => {
         listener = await appWebview.listen<SetupFailed>(SetupFailedEvent, (event) => {
-            failed = !!event.payload.message;
+            app_setup = !!event.payload.message;
         });
     });
 
@@ -19,8 +19,9 @@
     });
 </script>
 
+<header></header>
 <main class="relative flex min-h-screen w-full flex-col items-center justify-center gap-2 overflow-hidden">
-    {#if failed}
+    {#if app_setup}
         <div class="flex flex-col gap-2">
             <h1 class="text-2xl text-red-600">Something went wrong</h1>
             <p class="text-md">We couldn't start the program, try repairing the app or contact support.</p>
@@ -46,3 +47,4 @@
         </div>
     {/if}
 </main>
+<footer></footer>
