@@ -8,7 +8,6 @@
         page.url.pathname
             .split('/')
             .filter(Boolean)
-            .filter((segment) => segment !== 'app')
             .map((segment, index, array) => ({
                 label: capitalize(segment),
                 href: '/' + array.slice(0, index + 1).join('/'),
@@ -17,16 +16,16 @@
 </script>
 
 <div class="flex items-center gap-2.5 text-sm">
-    {#if page.url.pathname === '/app'}
+    {#if page.url.pathname === '/'}
         <p>Dashboard</p>
     {/if}
 
-    {#if page.url.pathname !== '/app' && breadcrumbs.length > 0}
-        <a href="/app" class="text-primary-brand">Home</a>
+    {#if page.url.pathname !== '/' && breadcrumbs.length > 0}
+        <a href="/" class="text-primary-brand">Home</a>
         <ChevronRight size={16} class="mt-1" />
         {#each breadcrumbs as breadcrumb, i}
             {#if i < breadcrumbs.length - 1}
-                <a href="/app{breadcrumb.href}" class="text-primary-brand">{breadcrumb.label}</a>
+                <a href={breadcrumb.href} class="text-primary-brand">{breadcrumb.label}</a>
                 <ChevronRight size={16} class="mt-1" />
             {:else}
                 <p class="text-black">{breadcrumb.label}</p>

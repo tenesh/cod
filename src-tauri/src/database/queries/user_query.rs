@@ -1,24 +1,23 @@
 use diesel::r2d2::{ConnectionManager, PooledConnection};
 use diesel::result::Error;
-use diesel::{QueryDsl, RunQueryDsl, SelectableHelper, SqliteConnection};
+use diesel::{OptionalExtension, QueryDsl, RunQueryDsl, SelectableHelper, SqliteConnection};
 use tracing::{debug, error, info, warn};
 
 use crate::database::models::user::{NewUser, User};
 use crate::database::schema::users;
 use crate::database::schema::users::dsl::*;
 
-pub fn get_user_by_id(
+pub fn get_user(
     conn: &mut PooledConnection<ConnectionManager<SqliteConnection>>,
-    user_id: i32,
-) -> Result<User, Error> {
+) -> Result<Option<User>, Error> {
     match users
-        .find(user_id)
         .select(User::as_select())
         .first::<User>(conn)
+        .optional()
     {
         Ok(user) => Ok(user),
         Err(e) => {
-            error!("Database query failed: get_user_by_id | Error: {:?}", e);
+            error!("Database query failed: get_user | Error: {:?}", e);
             Err(e)
         }
     }

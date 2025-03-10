@@ -6,7 +6,7 @@ use crate::database::models::user::{NewUser, User};
 use crate::database::queries::user_query;
 
 #[tauri::command]
-pub fn get_user(app: &AppHandle, user_id: i32) -> Response<User, String> {
+pub fn get_user(app: AppHandle) -> Response<User, String> {
     let mut conn = match establish_connection(&app) {
         Ok(conn) => conn,
         Err(_) => {
@@ -14,14 +14,14 @@ pub fn get_user(app: &AppHandle, user_id: i32) -> Response<User, String> {
         }
     };
 
-    match user_query::get_user_by_id(&mut conn, user_id) {
-        Ok(user) => Response::success("User retrieved successfully.", Some(user)),
-        Err(_) => Response::error("User not found", None),
+    match user_query::get_user(&mut conn) {
+        Ok(user) => Response::success("User retrieved successfully", user),
+        Err(_) => Response::error("Failed to retrieve user", None),
     }
 }
 
 #[tauri::command]
-pub fn create_user(app: &AppHandle, new_user: NewUser) -> Response<User, Vec<ValidationError>> {
+pub fn create_user(app: AppHandle, new_user: NewUser) -> Response<User, Vec<ValidationError>> {
     if let Some(errors) = validate_user(&new_user) {
         return Response::validation_error("Invalid inputs", errors);
     }

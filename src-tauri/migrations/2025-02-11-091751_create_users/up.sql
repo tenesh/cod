@@ -1,11 +1,11 @@
 -- Your SQL goes here
 CREATE TABLE users
 (
-	id         INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	username   TEXT    NOT NULL,
-	currency_api_key TEXT NULL,
-	created_at TEXT    NOT NULL DEFAULT current_timestamp,
-	updated_at TEXT    NOT NULL DEFAULT current_timestamp
+	id               INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	username         TEXT    NOT NULL,
+	currency_api_key TEXT    NULL,
+	created_at       TEXT    NOT NULL DEFAULT current_timestamp,
+	updated_at       TEXT    NOT NULL DEFAULT current_timestamp
 );
 
 CREATE TRIGGER update_users_updated_at

@@ -2,7 +2,7 @@
 name = "netbalance"
 version = "0.1.0"
 description = "Your personal financial companion — track, plan, and grow with confidence."
-authors = ["tenesh"]
+authors = ["codcax"]
 license = "GPL-3.0-or-later"
 edition = "2021"
 
