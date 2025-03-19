@@ -1,4 +1,4 @@
-use diesel::{Insertable, Queryable, Selectable};
+use diesel::{AsChangeset, Identifiable, Insertable, Queryable, Selectable};
 use serde::{Deserialize, Serialize};
 use crate::database::schema;
 
@@ -17,5 +17,13 @@ pub struct User {
 #[diesel(table_name = schema::users)]
 pub struct NewUser {
     pub username: String,
+    pub currency_api_key: Option<String>,
+}
+
+#[derive(AsChangeset, Identifiable, Serialize, Deserialize)]
+#[diesel(table_name = schema::users)]
+pub struct UpdateUser {
+    pub id: i32,
+    pub username: Option<String>,
     pub currency_api_key: Option<String>,
 }

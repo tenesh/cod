@@ -87,7 +87,7 @@ pub fn run_migrations() -> Result<()> {
     let mut conn = establish_direct_connection()?;
     match conn.run_pending_migrations(MIGRATIONS) {
         Ok(_) => {
-            info!("Database migrations completed successfully.");
+            info!("Database migrations completed successfully");
             Ok(())
         }
         Err(e) => {

@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 pub mod user_commands;
+pub mod account_commands;
 
 #[derive(Serialize, Deserialize)]
 pub struct ValidationError {
