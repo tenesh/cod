@@ -4,8 +4,8 @@
 
 <div class="fixed flex min-h-screen min-w-[250px] flex-col border-r border-r-secondary-100">
     <div class="mx-2 flex h-[76px] items-center justify-center gap-2 p-4">
-        <img src="/img/app.svg" alt="netbalance logo" class="h-auto w-8" />
-        <p class="mb-1.5 text-2xl font-bold text-primary-brand">netbalance</p>
+        <img src="/img/app.svg" alt="cod logo" class="h-auto w-8" />
+        <p class="mb-1.5 text-2xl font-bold text-primary-brand">cod</p>
     </div>
     <nav class="mx-2 flex flex-col items-center gap-0.5 p-4 text-sm">
         <a
